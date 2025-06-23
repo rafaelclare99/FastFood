@@ -2,7 +2,8 @@
 {
     public class Lanche
     {
-        public int LacheId { get; set; }
+        public int LancheId { get; set; }
+
         public string LancheNome { get; set; }
         public string DescricaoCurta { get; set; }
         public string DescricaoDetalhada { get; set; }
