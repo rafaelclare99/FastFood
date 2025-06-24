@@ -9,14 +9,14 @@ namespace LanchesMac.Models
         [Key]
         public int LancheId { get; set; }
 
-        [Required(ErrorMessage ="o nome do lanche deve ser informado")]
-        [Display(Name ="nome")]
-        [StringLength(20,ErrorMessage ="o nome tem que ter no maximo 20 caracteres")]
+        [Required(ErrorMessage = "o nome do lanche deve ser informado")]
+        [Display(Name = "nome")]
+        [StringLength(20, ErrorMessage = "o nome tem que ter no maximo 20 caracteres")]
         public string LancheNome { get; set; }
 
         [Required(ErrorMessage = "a descrição do lanche deve ser informado")]
         [Display(Name = "Descrição do Lanche")]
-        [MinLength(20,ErrorMessage ="a descrição tem que ter no minimo 20 caracteres")]
+        [MinLength(20, ErrorMessage = "a descrição tem que ter no minimo 20 caracteres")]
         [MaxLength(70, ErrorMessage = "o nome tem que ter no maximo 70 caracteres")]
         public string DescricaoCurta { get; set; }
 
@@ -26,22 +26,22 @@ namespace LanchesMac.Models
         [MaxLength(200, ErrorMessage = "o nome tem que ter no maximo 200 caracteres")]
         public string DescricaoDetalhada { get; set; }
 
-        [Required(ErrorMessage ="Informe o valor do lanche")]
-        [Display(Name ="Preço")]
+        [Required(ErrorMessage = "Informe o valor do lanche")]
+        [Display(Name = "Preço")]
         [Column(TypeName = "decimal(10,2)")]
-        [Range(1,999.99,ErrorMessage ="O preço deve está entre 1 a 999,999")]
+        [Range(1, 999.99, ErrorMessage = "O preço deve está entre 1 a 999,999")]
         public decimal Preco { get; set; }
 
-        [Display(Name ="Caminho da imagem")]
+        [Display(Name = "Caminho da imagem")]
         public string ImgegemUrl { get; set; }
 
-        [Display(Name ="caminho imagem minhatura")]
+        [Display(Name = "caminho imagem minhatura")]
         public string ImagemThumb { get; set; }
 
-        [Display(Name ="Prefiro ?")]
+        [Display(Name = "Prefiro ?")]
         public bool IsLanchePreferido { get; set; }
 
-        [Display(Name ="estoque")]
+        [Display(Name = "estoque")]
         public bool EmEstoque { get; set; }
 
         public int CategoriaId { get; set; }
