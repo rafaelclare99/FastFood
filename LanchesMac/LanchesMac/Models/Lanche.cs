@@ -31,9 +31,17 @@ namespace LanchesMac.Models
         [Column(TypeName = "decimal(10,2)")]
         [Range(1,999.99,ErrorMessage ="O preço deve está entre 1 a 999,999")]
         public decimal Preco { get; set; }
+
+        [Display(Name ="Caminho da imagem")]
         public string ImgegemUrl { get; set; }
+
+        [Display(Name ="caminho imagem minhatura")]
         public string ImagemThumb { get; set; }
+
+        [Display(Name ="Prefiro ?")]
         public bool IsLanchePreferido { get; set; }
+
+        [Display(Name ="estoque")]
         public bool EmEstoque { get; set; }
 
         public int CategoriaId { get; set; }
