@@ -10,19 +10,19 @@ namespace LanchesMac.Models
         public int LancheId { get; set; }
 
         [Required(ErrorMessage = "o nome do lanche deve ser informado")]
-        [Display(Name = "nome")]
-        [StringLength(20, ErrorMessage = "o nome tem que ter no maximo 20 caracteres")]
+        [Display(Name = "Nome")]
+        [StringLength(50, ErrorMessage = "o nome tem que ter no maximo 20 caracteres")]
         public string LancheNome { get; set; }
 
         [Required(ErrorMessage = "a descrição do lanche deve ser informado")]
         [Display(Name = "Descrição do Lanche")]
-        [MinLength(20, ErrorMessage = "a descrição tem que ter no minimo 20 caracteres")]
-        [MaxLength(70, ErrorMessage = "o nome tem que ter no maximo 70 caracteres")]
+        [MinLength(100, ErrorMessage = "a descrição tem que ter no minimo 100 caracteres")]
+        [MaxLength(200, ErrorMessage = "o nome tem que ter no maximo 200 caracteres")]
         public string DescricaoCurta { get; set; }
 
         [Required(ErrorMessage = "a descrição do lanche deve ser informado")]
         [Display(Name = "Descrição do Lanche Detalhada")]
-        [MinLength(20, ErrorMessage = "a descrição tem que ter no minimo 20 caracteres")]
+        [MinLength(100, ErrorMessage = "a descrição tem que ter no minimo 20 caracteres")]
         [MaxLength(200, ErrorMessage = "o nome tem que ter no maximo 200 caracteres")]
         public string DescricaoDetalhada { get; set; }
 
@@ -33,7 +33,7 @@ namespace LanchesMac.Models
         public decimal Preco { get; set; }
 
         [Display(Name = "Caminho da imagem")]
-        public string ImgegemUrl { get; set; }
+        public string ImagemUrl { get; set; }
 
         [Display(Name = "caminho imagem minhatura")]
         public string ImagemThumb { get; set; }
