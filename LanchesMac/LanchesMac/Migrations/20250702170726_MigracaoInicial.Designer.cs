@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LanchesMac.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250624205448_PopularCategoria")]
-    partial class PopularCategoria
+    [Migration("20250702170726_MigracaoInicial")]
+    partial class MigracaoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("ProductVersion", "6.0.35")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -59,8 +59,8 @@ namespace LanchesMac.Migrations
 
                     b.Property<string>("DescricaoCurta")
                         .IsRequired()
-                        .HasMaxLength(70)
-                        .HasColumnType("nvarchar(70)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("DescricaoDetalhada")
                         .IsRequired()
@@ -73,7 +73,7 @@ namespace LanchesMac.Migrations
                     b.Property<string>("ImagemThumb")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImgegemUrl")
+                    b.Property<string>("ImagemUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsLanchePreferido")
@@ -81,8 +81,8 @@ namespace LanchesMac.Migrations
 
                     b.Property<string>("LancheNome")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Preco")
                         .HasColumnType("decimal(10,2)");

@@ -4,7 +4,7 @@
 
 namespace LanchesMac.Migrations
 {
-    public partial class migration : Migration
+    public partial class MigracaoInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,11 +28,11 @@ namespace LanchesMac.Migrations
                 {
                     LancheId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LancheNome = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    DescricaoCurta = table.Column<string>(type: "nvarchar(70)", maxLength: 70, nullable: false),
+                    LancheNome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DescricaoCurta = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     DescricaoDetalhada = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Preco = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    ImgegemUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImagemUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImagemThumb = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsLanchePreferido = table.Column<bool>(type: "bit", nullable: false),
                     EmEstoque = table.Column<bool>(type: "bit", nullable: false),
