@@ -54,7 +54,7 @@ namespace LanchesMac.Models
                     Quantidade = 1
 
                 };
-                _context.CarrinhoCompraItens.Add(carrinhoCompraItem);     
+                _context.CarrinhoCompraItens.Add(carrinhoCompraItem);
 
             }
             else
@@ -63,13 +63,38 @@ namespace LanchesMac.Models
             }
             _context.SaveChanges();
 
+        }
 
+        public void RemoverDoCarrinho(Lanche lanche)
+        {
 
+            var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(s =>
+           s.lanche.LancheId == lanche.LancheId &&
+           s.CarrinhoCompraId == CarrinhoCompraId);
+
+            
+
+            if (carrinhoCompraItem != null)
+            {
+                if (carrinhoCompraItem.Quantidade > 1)
+                {
+                    carrinhoCompraItem.Quantidade--;
+                    
+                }
+                else
+                {
+                    _context.CarrinhoCompraItens.Remove(carrinhoCompraItem);    
+
+                }
+
+                _context.SaveChanges();
+                
+
+            }
 
 
 
 
         }
-
     }
 }
