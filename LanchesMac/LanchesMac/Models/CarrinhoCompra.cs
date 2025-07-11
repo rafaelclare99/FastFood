@@ -1,4 +1,5 @@
 ﻿using LanchesMac.Context;
+using LanchesMac.Controllers;
 using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac.Models
@@ -106,6 +107,11 @@ namespace LanchesMac.Models
             var total = _context.CarrinhoCompraItens.Where(c => c.CarrinhoCompraId == CarrinhoCompraId)
                 .Select(c => c.Lanche.Preco * c.Quantidade).Sum();
             return total;
+        }
+
+        public static implicit operator CarrinhoCompra(CarrinhoCompraController v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
