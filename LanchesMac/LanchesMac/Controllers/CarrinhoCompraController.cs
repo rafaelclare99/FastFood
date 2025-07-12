@@ -44,7 +44,7 @@ namespace LanchesMac.Controllers
 
         public RedirectToActionResult RemoverDoCarrinho(int lancheId)
         {
-            var lancheSelecionado = (_lanchesRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
+            var lancheSelecionado = (_lanchesRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId));
 
             if (lancheSelecionado != null)
             {
