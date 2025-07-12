@@ -31,5 +31,28 @@ namespace LanchesMac.Controllers
             return View(carrinhoCompraVM);
 
         }
+
+        public RedirectToActionResult AdicionarItemNoCarrinhoCompra(int lancheId)
+        {
+            var lancheSelecionado = _lanchesRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
+            if (lancheSelecionado != null)
+            {
+                _carrinhoCompra.AdicionarAoCarrinho(lancheSelecionado);
+            }
+            return RedirectToAction("index");
+        }
+
+        public RedirectToActionResult RemoverDoCarrinho(int lancheId)
+        {
+            var lancheSelecionado = (_lanchesRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
+
+            if (lancheSelecionado != null)
+            {
+                _carrinhoCompra.RemoverDoCarrinho(lancheSelecionado); 
+            }
+            return RedirectToAction("index");
+
+        }
+
     }
 }
