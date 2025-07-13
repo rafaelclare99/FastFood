@@ -8,20 +8,15 @@ namespace LanchesMac.Components
     public class CarrinhoCompraResumo : ViewComponent
     {
         readonly CarrinhoCompra _carrinhoCompra;
-         
-        public CarrinhoCompraResumo(CarrinhoCompra carrinhoCompra) 
+
+        public CarrinhoCompraResumo(CarrinhoCompra carrinhoCompra)
         {
-        _carrinhoCompra = carrinhoCompra;
+            _carrinhoCompra = carrinhoCompra;
         }
 
         public IViewComponentResult Invoke()
         {
-            //var itens = _carrinhoCompra.GetCarrinhoCompraItens();
-            var itens = new List<CarrinhoCompraItem>()
-            {
-                new CarrinhoCompraItem(),
-                new CarrinhoCompraItem()
-            };
+            var itens = _carrinhoCompra.GetCarrinhoCompraItens();
 
             _carrinhoCompra.CarrinhoCompraItems = itens;
 
