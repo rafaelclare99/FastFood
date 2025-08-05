@@ -28,7 +28,7 @@ namespace LanchesMac.Controllers
             }
             else
             {
-                if (string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
+                /*if (string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
                 {
                     lanches = _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Normal"))
                         .OrderBy(l => l.LancheNome);
@@ -37,7 +37,10 @@ namespace LanchesMac.Controllers
                 {
                     lanches = _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Natural"))
                            .OrderBy(l => l.LancheNome);
-                }
+                }*/
+                lanches = _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals(categoria))
+                    .OrderBy(c => c.Categoria.CategoriaNome);
+
                 categoriaAtual = categoria;
 
             }
