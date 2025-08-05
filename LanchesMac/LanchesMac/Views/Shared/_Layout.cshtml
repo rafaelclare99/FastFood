@@ -25,7 +25,9 @@
                             <a class="btn btn-outline-light px-3" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light px-3" asp-controller="Lanche" asp-action="List">Lanches</a>
+                            <div>
+                                @await Component.InvokeAsync("CategoriaMenu")
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-light px-3" asp-controller="Contato" asp-action="Index">Contato</a>
