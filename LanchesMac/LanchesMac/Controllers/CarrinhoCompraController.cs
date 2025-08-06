@@ -10,7 +10,7 @@ namespace LanchesMac.Controllers
         private readonly ILanchesRepository _lanchesRepository;
         private readonly CarrinhoCompra _carrinhoCompra;
 
-        public CarrinhoCompraController(ILanchesRepository lanchesRepository, CarrinhoCompraController carrinhoCompra)
+        public CarrinhoCompraController(ILanchesRepository lanchesRepository, CarrinhoCompra carrinhoCompra)
         {
             _lanchesRepository = lanchesRepository;
             _carrinhoCompra = carrinhoCompra;
