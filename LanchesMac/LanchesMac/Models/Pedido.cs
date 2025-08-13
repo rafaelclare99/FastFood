@@ -59,5 +59,17 @@ namespace LanchesMac.Models
         [ScaffoldColumn(false)]
         [Display(Name = "Itens no pedido ")]
         public string TotalItensPedido { get; set; }
+
+        [Display(Name ="Data do pedido ")]
+        [DataType(DataType.Text)]
+        [DisplayFormat(DataFormatString = "{0: dd/mm/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        public DateTime PedidoEnviado { get; set; }
+
+        [Display(Name = "Data envio pedido ")]
+        [DataType(DataType.Text)]
+        [DisplayFormat(DataFormatString = "{0: dd/mm/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        public DateTime? PedidoEntregueEm { get; set; }
+
+        public List<PedidoDetalhe> PedidoItens { get; set; }
     }
 }
