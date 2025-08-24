@@ -19,5 +19,11 @@ namespace LanchesMac.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Checkout(Pedido pedido)
+        {
+            return View();
+        }
     }
 }
