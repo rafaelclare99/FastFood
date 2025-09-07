@@ -58,7 +58,7 @@ namespace LanchesMac.Models
 
         [ScaffoldColumn(false)]
         [Display(Name = "Itens no pedido ")]
-        public string TotalItensPedido { get; set; }
+        public int TotalItensPedido { get; set; }
 
         [Display(Name ="Data do pedido ")]
         [DataType(DataType.Text)]
