@@ -6,7 +6,7 @@ namespace LanchesMac.ViewModels
     {
         [Required(ErrorMessage = "Informe o nome")]
         [Display(Name = "Informe o Usuario ")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [Required(ErrorMessage = "Informe o Senha")]
         [DataType(DataType.Password)]

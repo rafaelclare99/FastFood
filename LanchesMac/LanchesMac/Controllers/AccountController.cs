@@ -30,7 +30,7 @@ namespace LanchesMac.Controllers
                 return View(loginVM);
 
 
-            var user = await _userManager.FindByNameAsync(loginVM.Username);
+            var user = await _userManager.FindByNameAsync(loginVM.UserName);
 
             if (user != null)
             {
