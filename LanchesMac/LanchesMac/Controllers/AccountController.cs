@@ -37,7 +37,7 @@ namespace LanchesMac.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                 if (result.Succeeded)
                 {
-                    if (string.IsNullOrEmpty(loginVM.ReturnUrl)) 
+                    if (string.IsNullOrEmpty(loginVM.ReturnUrl))
                     {
                         return RedirectToAction("Index", "Home");
                     }
@@ -50,6 +50,32 @@ namespace LanchesMac.Controllers
 
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken] //evita ataque CSRF 
+        public async Task<IActionResult> Register(LoginViewModel RegistroVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser { UserName = RegistroVM.UserName };
+                var result = await _userManager.CreateAsync(user, RegistroVM.Password);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                else 
+                {
+                    this.ModelState.AddModelError("Registro", "Falha ao cadastrar o usuario");
+                }
+
+            }
+            return View(RegistroVM);
+        }
 
 
 
