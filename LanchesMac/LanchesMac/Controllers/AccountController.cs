@@ -11,24 +11,21 @@ namespace LanchesMac.Controllers
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
-            this._userManager = userManager;
-            this._signInManager = signInManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
-        public IActionResult Login(String returnUrl)
+        public IActionResult Login(string returnUrl)
         {
-            return View(new LoginViewModel()
-            {
-                ReturnUrl = returnUrl
-            });
+            return View(new LoginViewModel { ReturnUrl = returnUrl });
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel loginVM)
         {
             if (!ModelState.IsValid)
                 return View(loginVM);
-
 
             var user = await _userManager.FindByNameAsync(loginVM.UserName);
 
@@ -37,17 +34,15 @@ namespace LanchesMac.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                 if (result.Succeeded)
                 {
-                    if (string.IsNullOrEmpty(loginVM.ReturnUrl))
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                    return View(loginVM.ReturnUrl);
+                    if (!string.IsNullOrEmpty(loginVM.ReturnUrl) && Url.IsLocalUrl(loginVM.ReturnUrl))
+                        return Redirect(loginVM.ReturnUrl);
+
+                    return RedirectToAction("Index", "Home");
                 }
             }
-            ModelState.AddModelError("", "falaha ao realizar o login ");
+
+            ModelState.AddModelError("", "Falha ao realizar o login.");
             return View(loginVM);
-
-
         }
 
         public IActionResult Register()
@@ -56,39 +51,32 @@ namespace LanchesMac.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken] //evita ataque CSRF 
-        public async Task<IActionResult> Register(LoginViewModel RegistroVM)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(LoginViewModel registroVM)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = RegistroVM.UserName };
-                var result = await _userManager.CreateAsync(user, RegistroVM.Password);
+                var user = new IdentityUser { UserName = registroVM.UserName };
+                var result = await _userManager.CreateAsync(user, registroVM.Password);
 
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Login", "Account");
                 }
-                else
-                {
-                    this.ModelState.AddModelError("Registro", "Falha ao cadastrar o usuario");
-                }
 
+                ModelState.AddModelError("Registro", "Falha ao cadastrar o usuário.");
             }
-            return View(RegistroVM);
 
+            return View(registroVM);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            HttpContext.Session.Clear();
-            HttpContext.User = null;
-
             await _signInManager.SignOutAsync();
+            HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
-
-
-
     }
 }
