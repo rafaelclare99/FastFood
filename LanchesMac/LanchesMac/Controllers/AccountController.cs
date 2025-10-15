@@ -68,7 +68,7 @@ namespace LanchesMac.Controllers
                 {
                     return RedirectToAction("Login", "Account");
                 }
-                else 
+                else
                 {
                     this.ModelState.AddModelError("Registro", "Falha ao cadastrar o usuario");
                 }
@@ -76,6 +76,16 @@ namespace LanchesMac.Controllers
             }
             return View(RegistroVM);
 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Clear();
+            HttpContext.User = null;
+
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
 
 
