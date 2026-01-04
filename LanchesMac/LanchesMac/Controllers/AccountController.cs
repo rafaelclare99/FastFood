@@ -75,6 +75,7 @@ namespace LanchesMac.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+            HttpContext.User = null;
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
