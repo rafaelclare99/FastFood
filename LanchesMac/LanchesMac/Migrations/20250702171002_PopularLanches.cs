@@ -17,6 +17,7 @@ namespace LanchesMac.Migrations
 
             migrationBuilder.Sql("INSERT INTO Lanches(CategoriaId,DescricaoCurta,DescricaoDetalhada,EmEstoque,ImagemThumb,ImagemUrl,IsLanchePreferido,LancheNome,Preco) VALUES(2,'Pão Integral, queijo branco, peito de peru, cenoura, alface, iogurte','Pão integral natural com queijo branco, peito de peru e cenoura ralada com alface picado e iogurte natural.',1,'http://www.macoratti.net/Imagens/lanches/lanchenatural.jpg','http://www.macoratti.net/Imagens/lanches/lanchenatural.jpg',1,'Lanche Natural Peito Peru',15.00)");
 
+            migrationBuilder.Sql("INSERT INTO Lanches(CategoriaId,DescricaoCurta,DescricaoDetalhada,EmEstoque,ImagemThumb,ImagemUrl,IsLanchePreferido,LancheNome,Preco) VALUES(3,'Pão Integral, queijo branco, peito de peru, cenoura, alface, iogurte','Pão integral natural com cenoura ralada com alface picado e iogurte natural.',1,'http://www.macoratti.net/Imagens/lanches/lanchenatural.jpg','http://www.macoratti.net/Imagens/lanches/lanchenatural.jpg',1,'Lanche Vegano',15.00)");
 
         }
 
